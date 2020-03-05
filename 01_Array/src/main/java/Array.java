@@ -44,12 +44,15 @@ public class Array {
      * @param e 要添加的元素，int类型
      */
     public void addLast(int e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("AddLast failed. Array is full.");
-        }
+        add(size, e); // 重构，向所有元素后添加一个元素，也就是向size位置添加元素
+    }
 
-        data[size] = e;
-        size++;
+    /**
+     * 在所有元素前添加一个元素
+     * @param e 要添加的元素，int类型
+     */
+    public void addFirst(int e) {
+        add(0, e); // 使用 add 方法，快速实现 addFirst 方法
     }
 
     /**
