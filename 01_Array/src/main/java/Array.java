@@ -38,4 +38,38 @@ public class Array {
     public boolean isEmpty() {
         return size == 0;
     }
+
+    /**
+     * 向所有元素后添加一个元素
+     * @param e 要添加的元素，int类型
+     */
+    public void addLast(int e) {
+        if (size == data.length) {
+            throw new IllegalArgumentException("AddLast failed. Array is full.");
+        }
+
+        data[size] = e;
+        size++;
+    }
+
+    /**
+     * 在第index位置添加一个新元素e
+     * @param index 要添加的位置
+     * @param e 要添加的元素，int类型
+     */
+    public void add(int index, int e) {
+        if (size == data.length) {
+            throw new IllegalArgumentException("Add failed. Array is full.");
+        }
+
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
+        }
+
+        for (int i = size; i >= index; i--) {
+            data[size + 1] = data[size];
+        }
+        data[index] = e;
+        size++;
+    }
 }
