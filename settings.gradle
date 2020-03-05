@@ -1,2 +1,4 @@
 rootProject.name = 'PlayWithDataStructure'
+include '01_Array'
+findProject(':01_Array')?.name = 'Array'
 
