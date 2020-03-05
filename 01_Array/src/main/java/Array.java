@@ -1,6 +1,6 @@
-public class Array {
+public class Array<E> {
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     /**
@@ -8,7 +8,7 @@ public class Array {
      * @param capacity 指定容量
      */
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity]; // 泛型类型，不能直接创建对象，需要借助 Object，然后强转为 E 类型
         size = 0;
     }
 
@@ -43,7 +43,7 @@ public class Array {
      * 向所有元素后添加一个元素
      * @param e 要添加的元素，int类型
      */
-    public void addLast(int e) {
+    public void addLast(E e) {
         add(size, e); // 重构，向所有元素后添加一个元素，也就是向size位置添加元素
     }
 
@@ -51,7 +51,7 @@ public class Array {
      * 在所有元素前添加一个元素
      * @param e 要添加的元素，int类型
      */
-    public void addFirst(int e) {
+    public void addFirst(E e) {
         add(0, e); // 使用 add 方法，快速实现 addFirst 方法
     }
 
@@ -60,7 +60,7 @@ public class Array {
      * @param index 要添加的位置
      * @param e 要添加的元素，int类型
      */
-    public void add(int index, int e) {
+    public void add(int index, E e) {
         if (size == data.length) {
             throw new IllegalArgumentException("Add failed. Array is full.");
         }
@@ -81,7 +81,7 @@ public class Array {
      * @param index
      * @return
      */
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         }
@@ -94,7 +94,7 @@ public class Array {
      * @param index 索引
      * @param e 新元素e
      */
-    public void set(int index, int e) {
+    public void set(int index, E e) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Set failed. Index is illegal.");
         }
@@ -106,9 +106,9 @@ public class Array {
      * @param e 要查找的元素
      * @return
      */
-    public boolean contains(int e) {
+    public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) { // 泛型类型，都是对象类型，对象比较使用 equals
                 return true;
             }
         }
@@ -120,9 +120,9 @@ public class Array {
      * @param e 元素e
      * @return 不存在，返回-1
      */
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -134,11 +134,11 @@ public class Array {
      * @param index 索引
      * @return 返回被删除的元素
      */
-    public int remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove failed. Index is illegal.");
         }
-        int ret = data[index];
+        E ret = data[index];
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
@@ -150,7 +150,7 @@ public class Array {
      * 从数组中删除第一个元素
      * @return 返回被删除的元素
      */
-    public int removeFirst() {
+    public E removeFirst() {
         return remove(0);
     }
 
@@ -158,7 +158,7 @@ public class Array {
      * 从数组中删除最后一个元素
      * @return 返回被删除的元素
      */
-    public int removeLast() {
+    public E removeLast() {
         return remove(size - 1);
     }
 
@@ -166,7 +166,7 @@ public class Array {
      * 从数组中删除元素e
      * @param e 元素e
      */
-    public void removeElement(int e) {
+    public void removeElement(E e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
