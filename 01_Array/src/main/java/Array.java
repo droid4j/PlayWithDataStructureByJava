@@ -69,8 +69,8 @@ public class Array {
             throw new IllegalArgumentException("Add failed. Require index >= 0 and index <= size.");
         }
 
-        for (int i = size; i >= index; i--) {
-            data[size + 1] = data[size];
+        for (int i = size; i > index; i--) {
+            data[i] = data[i - 1];
         }
         data[index] = e;
         size++;
