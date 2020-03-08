@@ -2,6 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
         Array<Integer> array = new Array<>();
+        array.addLast(1);
+        System.out.println(array.get(array.getSize()));
         for (int i = 0; i < 10; i++) {
             array.addLast(i);
         }
@@ -22,6 +24,7 @@ public class Main {
 
         array.removeFirst();
         System.out.println(array);
+        System.out.println(array.get(array.getSize()));
     }
 
     private static void test() {
