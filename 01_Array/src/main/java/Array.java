@@ -143,7 +143,9 @@ public class Array<E> {
         for (int i = index + 1; i < size; i++) {
             data[i - 1] = data[i];
         }
-        if (size == data.length / 2) {
+
+        // 防止复杂度震荡，1.不要着急缩容；2. 新容量不能为0
+        if (size == data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
         size--;
