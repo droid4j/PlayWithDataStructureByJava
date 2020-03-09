@@ -1,6 +1,12 @@
 rootProject.name = 'PlayWithDataStructure'
+// include '01_Array'
+// findProject(':01_Array')?.name = 'Array'
+// include '02_Stack'
+// findProject(':02_Stack')?.name = 'stack'
+
 include '01_Array'
-findProject(':01_Array')?.name = 'Array'
+project(':01_Array').projectDir = new File("./01_Array")
+
 include '02_Stack'
-findProject(':02_Stack')?.name = 'stack'
+project(':02_Stack').projectDir = new File("./02_Stack")
 
