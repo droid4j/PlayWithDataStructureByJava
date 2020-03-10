@@ -17,6 +17,19 @@ import java.util.Stack;
  */
 public class Solution {
 
+    /**
+     * 思路：什么时候入栈，什么时候出栈，最终合法性判断
+     *      1. 当前字符是左括号就入栈
+     *      2. 当前字符不是左括号，就要取出栈顶元素
+     *      3. 字符串遍历结束，并且栈为空，表示匹配成功
+     *      边界值：
+     *      1. 检测input合法性，不合法，直接返回false
+     *      2. 如果不是左括号，并且栈已经为空，直接返回false，不用再比较当前字符与栈顶元素
+     *      3. 不管栈顶元素是什么，只要与当前元素不匹配，直接返回false，不用管其他场景
+     *      4. 遍历完整个input还不算完，还要满足栈为空这个条件，才算是匹配成功
+     * @param s
+     * @return
+     */
     public boolean isValid(String s) {
         if (s == null || s.length() <= 0) return false;
         Stack<Character> stack = new Stack<>();
