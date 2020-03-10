@@ -9,4 +9,6 @@ project(':01_Array').projectDir = new File("./01_Array")
 
 include '02_Stack'
 project(':02_Stack').projectDir = new File("./02_Stack")
+include 'Leetcode_20_Valid_Parentheses'
+findProject(':Leetcode_20_Valid_Parentheses')?.name = 'leetcode20'
 
