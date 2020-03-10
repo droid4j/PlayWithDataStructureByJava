@@ -82,7 +82,7 @@ public class LoopQueue<E> implements Queue<E> {
     }
 
     private void resize(int newCapacity) {
-        System.out.println("扩容 old=" + getCapacity() + ", new=" + newCapacity);
+        // System.out.println("扩容 old=" + getCapacity() + ", new=" + newCapacity);
         E[] newData = (E[]) new Object[newCapacity + 1];
         for (int i = 0; i < size; i++) {
             newData[i] = data[(front + i) % data.length];
