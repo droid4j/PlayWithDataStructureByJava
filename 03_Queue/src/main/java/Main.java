@@ -10,7 +10,7 @@ public class Main {
     }
 
     private static void testQueue(Queue<Integer> queue) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             queue.enqueue(i);
             System.out.println("入队 " + queue);
 

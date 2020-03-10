@@ -32,6 +32,8 @@ public class LoopQueue<E> implements Queue<E> {
 
     @Override
     public void enqueue(E e) {
+        if ((tail + 1) % data.length == front)
+            resize(getCapacity() * 2);
 
         data[tail] = e;
         tail = (tail + 1) % data.length; // 入队，加入到队尾，维护 tail 指针
@@ -47,6 +49,11 @@ public class LoopQueue<E> implements Queue<E> {
         data[front] = null;
         front = (front + 1) % data.length; // 出队，从队首取出元素，维护 front 指针
         size--;
+
+        if (size == getCapacity() / 4 && getCapacity() / 2 != 0) {
+            resize(getCapacity() / 2);
+        }
+
         return ret;
     }
 
@@ -72,5 +79,16 @@ public class LoopQueue<E> implements Queue<E> {
         res.append("] tail");
 
         return res.toString();
+    }
+
+    private void resize(int newCapacity) {
+        System.out.println("扩容 old=" + getCapacity() + ", new=" + newCapacity);
+        E[] newData = (E[]) new Object[newCapacity + 1];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[(front + i) % data.length];
+        }
+        data = newData;
+        front = 0;
+        tail = size;
     }
 }
