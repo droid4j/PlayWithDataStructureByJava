@@ -13,4 +13,6 @@ include 'Leetcode_20_Valid_Parentheses'
 findProject(':Leetcode_20_Valid_Parentheses')?.name = 'leetcode20'
 include 'Leetcode_20_Valid_Parentheses_2'
 findProject(':Leetcode_20_Valid_Parentheses_2')?.name = 'leetcode20_2'
+include '03_Queue'
+findProject(':03_Queue')?.name = 'Queue'
 
