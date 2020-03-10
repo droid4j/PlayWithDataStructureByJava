@@ -2,7 +2,14 @@
 public class Main {
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayQueue<>();
+        Queue<Integer> arrayQueue = new ArrayQueue<>();
+        testQueue(arrayQueue);
+        System.out.println("-------");
+        Queue<Integer> loopQueue = new LoopQueue<>();
+        testQueue(loopQueue);
+    }
+
+    private static void testQueue(Queue<Integer> queue) {
         for (int i = 0; i < 10; i++) {
             queue.enqueue(i);
             System.out.println("入队 " + queue);
