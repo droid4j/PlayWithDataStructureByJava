@@ -120,6 +120,40 @@ public class LinkedList<E> {
         return false;
     }
 
+    /**
+     * 从链表中删除index(0-based)位置的元素，返回删除的元素
+     * @param index 索引
+     * @return
+     * 在链表中不是一个常用的操作，练习用
+     */
+    public E remove(int index) {
+        Node prev = this.dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node delNode = prev.next;
+        prev.next = prev.next.next;
+        delNode.next = null;
+        size--;
+        return delNode.e;
+    }
+
+    /**
+     * 从链表中删除第一个元素，返回删除的元素
+     * @return
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 从链表中删除最后一个元素，返回删除的元素
+     * @return
+     */
+    public E removeLast() {
+        return remove(size-1);
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
