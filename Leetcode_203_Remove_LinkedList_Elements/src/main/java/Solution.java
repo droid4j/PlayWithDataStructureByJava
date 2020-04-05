@@ -4,9 +4,7 @@ public class Solution {
     public ListNode removeElements(ListNode head, int val) {
 
         while (head != null && head.val == val) { // 删除开始部分的结点
-            ListNode delNode = head;
-            head = head.next;
-            delNode.next = null;
+            head = head.next; // 跳过当前节点
         }
 
         if (head == null)
@@ -15,9 +13,7 @@ public class Solution {
         ListNode prev = head;
         while (prev.next != null) {
             if (prev.next.val == val) {
-                ListNode delNode = prev.next;
-                prev.next = delNode.next;
-                delNode.next = null;
+                prev.next = prev.next.next; // 跳过prev的下一个节点
             } else {
                 prev = prev.next;
             }
