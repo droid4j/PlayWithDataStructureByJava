@@ -19,4 +19,6 @@ include '04_LinkedList'
 project(':04_LinkedList').projectDir = new File("./04_LinkedList")
 include 'Leetcode_203_Remove_LinkedList_Elements'
 findProject(':Leetcode_203_Remove_LinkedList_Elements')?.name = 'leetcode203'
+include '05_BST'
+findProject(':05_BST')?.name = 'BST'
 
