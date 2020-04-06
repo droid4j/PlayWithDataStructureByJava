@@ -145,6 +145,37 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    // 查找二分搜索树的最小元素
+    public E minimum() {
+        return minimum(root).e;
+    }
+
+    private Node minimum(Node node) {
+        if (size == 0)
+            throw new IllegalArgumentException("BST is empty");
+
+        if (node.left == null)
+            return node;
+
+        return minimum(node.left);
+    }
+
+    // 查找二分搜索树的最大元素
+    public E maximum() {
+        return maximum(root).e;
+    }
+
+    // 返回以node为根的二分搜索树的最大值所在节点
+    private Node maximum(Node node) {
+        if (size == 0)
+            throw new IllegalArgumentException("BST is empty");
+
+        if (node.right == null)
+            return node;
+
+        return maximum(node.right);
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
