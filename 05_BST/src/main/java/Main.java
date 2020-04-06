@@ -15,14 +15,16 @@ public class Main {
         //     / \    \     //
         //    2   4    8    //
         //////////////////////
-        bst.preOrder();
-        System.out.println();
+        // bst.preOrder();
+        // System.out.println();
         // System.out.println(bst);
 
-        bst.inOrder();
-        System.out.println();
+        // bst.inOrder();
+        // System.out.println();
 
-        bst.postOrder();
-        System.out.println();
+        // bst.postOrder();
+        // System.out.println();
+
+        bst.levelOrder();
     }
 }
